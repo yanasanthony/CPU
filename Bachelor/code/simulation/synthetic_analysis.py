@@ -1,25 +1,53 @@
 # 数组计算部分
 import numpy as np
 import pandas as pd
-# 机器学习部分
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, mean_absolute_error
 # 系统部分
 import os
 import random
+from math import exp, log2
+
+def calculate_lambdas(s):
+    '''
+    计算Jacobian矩阵特征值
+    : param s: 指定的s值
+    : rerturn: 特征值数组
+    '''
+    return np.array([0.905**(np.abs(s)), 0.741, 0.643, 0.333, 0.257])
+
+def generate_gussian_noise():
+    '''
+    生成高斯噪声对角矩阵
+    : return: 高斯噪声对角矩阵
+    '''
+    noise = np.sort(np.abs(np.random.normal(0, 0.1, 5)))[::-1]
+    noise_ = np.zeros(5)
+    noise_[0] = noise[0]
+    noise_[1] = noise[1]
+    noise_[2] = noise[4]
+    noise_[3] = noise[3]
+    noise_[4] = noise[2]
+    return np.diag(noise)
 
 def calculate_y_covariance(lambdas, noise_cov_matrix):
     '''
     计算y的方差
     : param lambdas: Jacobian矩阵的特征值
-    : return noise_cov_matrix: 高斯噪声协方差矩阵
+    : param noise_cov_matrix: 高斯噪声协方差矩阵
+    : return: y值方差, y值协方差矩阵
     '''
+    
+    # 节点数
     nodes = len(lambdas)
+
+    # 定义空的y值协方差矩阵，用于存储y值协方差，矩阵形式nodes*nodes
     y_cov = np.zeros((nodes, nodes))
+
+    # 计算y值协方差
     for i in range(nodes):
         for j in range(nodes):
             y_cov[i, j] = noise_cov_matrix[i, j] / (1 - lambdas[i] * lambdas[j])
+
+    # 取协方差矩阵的对角线为y值方差
     y_var = np.diag(y_cov)
 
     return y_var, y_cov
@@ -41,51 +69,57 @@ def network_analysis(s_array, S, edge_relations, output_dir,
     : param S: 特征矩阵
     : param edge_relations: 基因之间的关系字典
     : param output_dir: 输出目录
+    : return:
     '''
-    
+    # 节点数
     nodes = S.shape[0]
 
-    # 存放y方差的容器
-    y_var_array = np.zeros((len(s_array), steps, nodes))
+    # 定义空的y值方差的容器
+    y_sd_array = np.zeros((len(s_array), steps, nodes))
 
-    # 存放基因表达量g方差的容器
-    g_var_array = np.zeros((len(s_array), steps, nodes))
+    # 定义空的基因表达量g值标准差SD的容器
+    g_sd_array = np.zeros((len(s_array), steps, nodes))
 
-    # 存放基因与基因之间相关系数的容器
-    edge_corr_array = np.zeros((len(s_array), steps, len(edge_relations)))
+    # 定义空的基因与基因之间相关系数PCC的容器
+    edge_pcc_array = np.zeros((len(s_array), steps, len(edge_relations)))
 
     # 存放模拟数据的容器
     simulation_data = np.zeros((len(s_array), steps, nodes))
 
     for idx, s in enumerate(s_array):
-        # 计算lambdas
+
+        # 计算特定s值下的特征值
         lambdas = calculate_lambdas(s)
+
         # 生成总体高斯白噪声对角阵
         seed = 2025
         random.seed(seed+idx)
         general_noise_cov_matrix = generate_gussian_noise()
+
         # 生成模拟数据初始值
         yk = np.zeros(nodes)
+
         for step in range(steps):
             # 生成高斯噪声对角阵
             seed_ = 2025
             random.seed(seed_+step)
             noise_cov_matrix = generate_gussian_noise()
-            # 计算y的方差和协方差
-            y_var, y_cov = calculate_y_covariance(lambdas = lambdas, noise_cov_matrix = noise_cov_matrix)
-            y_var_array[idx][step] = y_var
 
-            # 计算基因表达量g的方差
+            # 计算y的标准差
+            y_var, y_cov = calculate_y_covariance(lambdas = lambdas, noise_cov_matrix = noise_cov_matrix)
+            y_sd_array[idx][step] = np.sqrt(y_var)
+
+            # 计算基因表达量g的标准差
             g_cov = calculate_g_covariance(S = S, y_cov = y_cov)
             g_var = np.diag(g_cov)
-            g_var_array[idx][step] = g_var
+            g_sd_array[idx][step] = np.sqrt(g_var)
 
             # 计算基因与基因之间的相关系数
             pcc_matrix = g_cov / np.outer(np.sqrt(g_var), np.sqrt(g_var))
             pcc = np.zeros(len(edge_relations))
             for i, (edge, (node1, node2)) in enumerate(edge_relations.items()):
                 pcc[i] = pcc_matrix[node1-1, node2-1]
-            edge_corr_array[idx][step] = np.abs(pcc)
+            edge_pcc_array[idx][step] = np.abs(pcc)
 
             # 模拟数据
             yk_ = lambdas*yk + np.diagonal(general_noise_cov_matrix)
@@ -93,32 +127,35 @@ def network_analysis(s_array, S, edge_relations, output_dir,
             simulation_data[idx][step] = np.abs(gk_)
             yk = yk_
             
-    # 储存y的方差为csv
-    y_var_df = pd.DataFrame(
-        np.mean(y_var_array,axis=1), 
-        columns=[f'Var(y{i+1})' for i in range(nodes)],
+    # 存储y的方差为csv
+    y_sd_df = pd.DataFrame(
+        np.mean(y_sd_array,axis=1), 
+        columns=[f'SD(y{i+1})' for i in range(nodes)],
         index=[f's{i+1}' for i in range(len(s_array))]
     )
-    y_var_df.to_csv(os.path.join(output_dir, 'y_variance.csv'), index=True)
-    print("Variance of y under different s values has been generated successfully!")
+    y_sd_df.to_csv(os.path.join(output_dir, 'y_sd.csv'), index=True)
+    print("The standard deviation of y under different s values has been generated successfully!")
 
-    # 储存基因表达量g的方差为csv
-    g_var_df = pd.DataFrame(
-        np.mean(g_var_array,axis=1), 
-        columns=[f'Var(node{i+1})' for i in range(nodes)],
+    # 存储基因表达量g的方差为csv
+    g_sd_df = pd.DataFrame(
+        np.mean(g_sd_array,axis=1), 
+        columns=[f'SD(node{i+1})' for i in range(nodes)],
         index=[f's{i+1}' for i in range(len(s_array))]
     )
-    g_var_df.to_csv(os.path.join(output_dir, 'g_variance.csv'), index=True)
-    print("Variance of g under different s values has been generated successfully!")
+    g_sd_df.to_csv(os.path.join(output_dir, 'g_sd.csv'), index=True)
+    print("The standard deviation of g under different s values has been generated successfully!")
 
-    # 储存基因与基因之间的相关系数为csv
-    edge_corr_df = pd.DataFrame(
-        np.mean(edge_corr_array,axis=1), 
-        columns=[f'PCC(edge{i+1})' for i in range(len(edge_relations))],
+    # 存储基因与基因之间的相关系数为csv
+    columns = []
+    for i, (edge, (node1, node2)) in enumerate(edge_relations.items()):
+        columns.append(edge)
+    edge_pcc_df = pd.DataFrame(
+        np.mean(edge_pcc_array,axis=1), 
+        columns=columns,
         index=[f's{i+1}' for i in range(len(s_array))]
     )
-    edge_corr_df.to_csv(os.path.join(output_dir, 'edge_correlation.csv'), index=True)
-    print("Correlation of edges under different s values has been generated successfully!")
+    edge_pcc_df.to_csv(os.path.join(output_dir, 'edge_correlation.csv'), index=True)
+    print("The correlation of edges under different s values has been generated successfully!")
 
     # 存储模拟数据
     simulation_data_df = pd.DataFrame(
@@ -133,20 +170,9 @@ def network_analysis(s_array, S, edge_relations, output_dir,
         columns=[f'node{i+1}' for i in range(nodes)],
         index=[f's{i+1}' for i in range(len(s_array))]
     )
-    simulation_data_std_df.to_csv(os.path.join(output_dir, 'simulation_data_std.csv'), index=True)
+    simulation_data_std_df.to_csv(os.path.join(output_dir, 'simulation_data_sd.csv'), index=True)
     print("The standard deviation of simulation data under different s values has been generated successfully!")
 
-def calculate_lambdas(s):
-    return np.array([0.905**(np.abs(s)), 0.741, 0.643, 0.333, 0.257])
-def generate_gussian_noise():
-    noise = np.sort(np.abs(np.random.normal(0, 0.1, 5)))[::-1]
-    noise_ = np.zeros(5)
-    noise_[0] = noise[0]
-    noise_[1] = noise[2]
-    noise_[2] = noise[4]
-    noise_[3] = noise[3]
-    noise_[4] = noise[1]
-    return np.diag(noise)
 
 def calculate_FT(case_path, ref_path, output_dir):
     '''
@@ -155,8 +181,7 @@ def calculate_FT(case_path, ref_path, output_dir):
     : param ref_path: 对照样本基因表达量文件路径
     : param output_dir: 计算结果保存文件夹
     '''
-    
-    # 打开病例样本的不同s值表达量文件
+    # 打开病例样本的不同s值表达文件
     case_df = pd.read_csv(case_path, index_col=0)
     # 打开对照样本的不同s值表达量文件
     ref_df = pd.read_csv(ref_path, index_col=0)
@@ -168,20 +193,28 @@ def calculate_FT(case_path, ref_path, output_dir):
     FT_df = pd.DataFrame(
         FT,
         index=[f"s{i+1}" for i in range(case_df.shape[0])],
-        columns=[f"FT(node{i+1})" for i in range(case_df.shape[1])]
+        columns=[f"node{i+1}" for i in range(case_df.shape[1])]
     )
     FT_df.to_csv(os.path.join(output_dir, 'simulation_data_FT.csv'), index=True)
     print("The FT values of simulation data under different s values have been generated successfully!")
 
-def calculate_w(node_relations_path, case_path, ref_path, output_dir):
-    # 打开病例样本的不同s值表达量文件
-    case_df = pd.read_csv(case_path, index_col=0)
-    # 打开对照样本的不同s值表达量文件
-    ref_df = pd.read_csv(ref_path, index_col=0)
+def calculate_w(node_relations_path, node_pcc_path,case_std_path, output_dir):
+    '''
+    计算各节点之间的因果强度w值
+    : param node_relations_path: 节点关系文件路径
+    : param case_path: 病例样本基因表达量文件路径
+    : param ref_path: 对照样本基因表达量文件路径
+    : param output_dir: 计算结果保存文件夹
+    '''
+
+    # 打开节点pearson相关系数文件
+    node_pcc_df = pd.read_csv(node_pcc_path, index_col=0)
+    # 打开节点表达量标准差文件
+    case_std_df = pd.read_csv(case_std_path, index_col=0)
     # 打开PPI文件
     node_df = pd.read_csv(node_relations_path)
     # 创建节点关系字典
-    gene1 = list(set(node_df["Gene1"]))
+    gene1 = list(sorted(set(node_df["Gene1"]),key=lambda x:x[4]))
     node_dict = {}
     for node in gene1:
         node_dict[node] = list(node_df[node_df["Gene1"] == node]["Gene2"])
@@ -190,161 +223,174 @@ def calculate_w(node_relations_path, case_path, ref_path, output_dir):
     re = 0
     for i in range(len(items)):
         re += len(items[i][1])
-    w_array = np.zeros((re, len(case_df)))
+    w_array = np.zeros((len(case_std_df),re))
 
-    Flag = 0
     columns = []
     for i in range(len(items)):
         node1 = items[i][0]
-        train_y = ref_df[items[i][0]]
-        train_x = ref_df[items[i][1]]
-        n_estimators = RF_model_select_estimators(train_y=train_y,train_x=train_x,output_dir=output_dir)
-        max_depth = RF_model_select_depth(train_y=train_y,train_x=train_x,output_dir=output_dir)
-        y = case_df[items[i][0]]
-        x = case_df[items[i][1]]
-        error1 = RF_model(y=y, x=x,train_y=train_y,train_x=train_x,
-                         n_estimators=n_estimators,max_depth=max_depth)
-        for j in range(x.shape[1]):
+        for j in range(len(items[i][1])):
             node2 = items[i][1][j]
-            train_x_ = train_x.drop(items[i][1][j], axis = 1)
-            x_ = x.drop(items[i][1][j],axis = 1)
-            error2 = RF_model(y=y, x=x_,train_y=train_y,train_x=train_x_,
-                              n_estimators=n_estimators,max_depth=max_depth)
-            w = np.log((error2)/(error1))
-            w_array[Flag] = w
-            Flag += 1
-            edge = node1+"-"+node2
-            columns.append(edge)
-
+            columns.append(node1+"-"+node2)
+    for s in range(len(case_std_df)):
+        w = np.zeros(re)
+        Flag = 0
+        for i in range(len(items)):
+            node1 = items[i][0]
+            for j in range(len(items[i][1])):
+                node2 = items[i][1][j]
+                SD = case_std_df[node2].iloc[s]
+                if int(node1[4])<int(node2[4]):
+                    PCC = node_pcc_df[node1+"-"+node2].iloc[s]
+                else:
+                    PCC = node_pcc_df[node2+"-"+node1].iloc[s]
+                w[Flag] = SD*PCC
+                Flag += 1
+        w_array[s] = w
+    
     w_df = pd.DataFrame(
-        w_array.T,
-        index = [f's{i+1}' for i in range(len(case_df))],
+        w_array,
+        index=[f's{i+1}' for i in range(len(case_std_df))],
         columns=columns
     )
-    w_df.to_csv(os.path.join(output_dir,"simulation_data_w.csv"),index=True)
+    w_df.to_csv(os.path.join(output_dir, 'simulation_data_w.csv'), index=True)
     print("The w values of simulation data under different s values have been generated successfully!")
-    
-def RF_model(y,x,train_y, train_x,
-             n_estimators, max_depth):
+
+def calculate_alpha(t_array):
     '''
-    随机森林模型计算误差
-    : param y: 预测数据因变量
-    : param x: 预测数据自变量
-    : param train_y: 训练数据因变量
-    : param train_x: 训练数据自变量
-    : param n_estimators: 决策树数量
-    : param max_depth: 单棵树的最大深度
+    计算系数
+    : param t_array: 某节点时刻t的与其他节点的w值数组
+    : return: 系数alpha
     '''
-    # 初始化随机森林模型
-    model = RandomForestRegressor(
-        n_estimators=n_estimators,
-        max_depth=max_depth,
-        min_samples_leaf=3, # 节点分裂的最小样本数
-        max_features=int(np.ceil(np.log(x.shape[1])/np.log(2))), # 每次分裂随机选择的最大特征数
-        n_jobs=1, # 是否并行计算
-        random_state=2025
-    )
+    w_in_sum = 0
+    w_out_sum = 0
+    for i in range(len(t_array)):
+        if t_array[i]>1:
+            w_in_sum += t_array[i]
+        else:
+            w_out_sum += t_array[i]
+    alpha = w_in_sum/(w_in_sum+np.abs(w_out_sum))
+    return alpha
 
-    # 模型训练
-    model.fit(train_x, train_y)
-    #
-    y_pred = model.predict(x)
-    error = (y-y_pred)**2
-    return error
+def calculate_local_RFSCNE(node_relations_path,FT,w):
+    '''
+    计算局部因果网络的RF-SCNE值
+    : param node_relations_path: 节点关系文件路径
+    : param FT_path: FT值文件存放路径
+    : param w_path: w值文件存放路径
+    : return: 各节点局部因果网络的RF-SCNE的熵值列表
+    '''
 
-def RF_model_select_estimators(train_y,train_x,
-                               output_dir):
+    # 打开PPI文件
+    node_df = pd.read_csv(node_relations_path)
 
-    # 数据分割, 80%为训练数据, 20%为验证数据
-    X_train, X_val, y_train, y_val = train_test_split(
-        train_x,
-        train_y,
-        test_size=0.2,
-        random_state=2025
-    )
+    # 创建节点关系字典
+    gene1 = list(sorted(set(node_df["Gene1"]),key=lambda x:x[4]))
+    node_dict = {}
+    for node in gene1:
+        node_dict[node] = list(node_df[node_df["Gene1"] == node]["Gene2"])
+    items = list(node_dict.items())
+    # 存储局部熵值
+    H_k_ls = []
+    # 计算局部熵值
+    for i in range(len(items)):
 
-    # 固定max_depth为20, 寻找最优n_estimators
-    n_estimators = np.linspace(100,500,101).astype(int)
-    train_mse = []
-    val_mse = []
-    train_mae = []
-    val_mae = []
-    for i in range(len(n_estimators)):
-        # 初始化模型
-        model1 = RandomForestRegressor(
-            n_estimators=n_estimators[i],
-            max_depth=20,
-            min_samples_leaf=3,
-            max_features=int(np.ceil(np.log(train_x.shape[1])/np.log(2))),
-            n_jobs=1,
-            random_state=2025
-        )
-        # 模型训练
-        model1.fit(X_train, y_train)
-        # 模型预测
-        y_train_pred = model1.predict(train_x)
-        y_val_pred = model1.predict(X_val)
-        # 评估指标计算
-        # 计算MSE
-        train_MSE = mean_squared_error(train_y, y_train_pred)
-        val_MSE = mean_squared_error(y_val, y_val_pred)
-        train_mse.append(train_MSE)
-        val_mse.append(val_MSE)
-        # 计算MAE
-        train_MAE = mean_absolute_error(train_y,y_train_pred)
-        val_MAE = mean_absolute_error(y_val, y_val_pred)
-        train_mae.append(train_MAE)
-        val_mae.append(val_MAE)
+        # 对于每一个中心基因，存储各邻接基因关系
+        from_ = [f'{items[i][1][j]}' for j in range(len(items[i][1]))]
+        fromto = [f'{items[i][1][j]}-{items[i][0]}' for j in range(len(items[i][1]))]
+        tofrom = [f'{items[i][0]}-{items[i][1][j]}' for j in range(len(items[i][1]))]
 
-    return n_estimators[val_mse.index(min(val_mse))]
+        # 
+        oneGene_FT = np.array(FT)
+        oneGene_w = np.array(w[fromto])
 
-def RF_model_select_depth(train_y,train_x,
-                          output_dir):
+        # 计算系数alpha
+        alpha = calculate_alpha(t_array=oneGene_w)
 
-    # 数据分割, 80%为训练数据, 20%为验证数据
-    X_train, X_val, y_train, y_val = train_test_split(
-        train_x,
-        train_y,
-        test_size=0.2,
-        random_state=2025
-    )
+        # 入度基因和出度基因
+        in_degree, in_relations = [], []
+        out_degree, out_relations = [], []
+        for idx, num in enumerate(oneGene_w):
+            if num>1:
+                in_degree.append(from_[idx])
+                in_relations.append(tofrom[idx])
+            else:
+                out_degree.append(from_[idx])
+                out_relations.append(fromto[idx])
+        
 
-    # 固定n_estimators为100, 寻找最优max_depth
-    max_depth = np.linspace(20,50,31).astype(int)
-    train_mse = []
-    val_mse = []
-    train_mae = []
-    val_mae = []
-    for i in range(len(max_depth)):
-        # 初始化模型
-        model1 = RandomForestRegressor(
-            n_estimators=100,
-            max_depth=max_depth[i],
-            min_samples_leaf=3,
-            max_features=int(np.ceil(np.log(train_x.shape[1])/np.log(2))),
-            n_jobs=1,
-            random_state=2025
-        )
-        # 模型训练
-        model1.fit(X_train, y_train)
-        # 模型预测
-        y_train_pred = model1.predict(train_x)
-        y_val_pred = model1.predict(X_val)
-        # 评估指标计算
-        # 计算MSE
-        train_MSE = mean_squared_error(train_y, y_train_pred)
-        val_MSE = mean_squared_error(y_val, y_val_pred)
-        train_mse.append(train_MSE)
-        val_mse.append(val_MSE)
-        # 计算MAE
-        train_MAE = mean_absolute_error(train_y,y_train_pred)
-        val_MAE = mean_absolute_error(y_val, y_val_pred)
-        train_mae.append(train_MAE)
-        val_mae.append(val_MAE)
+
+        # 计算入度加权概率, sigmoid值,exp值
+        if len(in_degree) == 0:
+            H_in = 0
+        else:
+            # 入度因果
+            w_in = list(w[in_relations])
+            # 入度波动
+            FT_in = FT[items[i][0]]
+
+            p_in = [num/sum(w_in) for num in w_in]
+            FT_in_sigmoid = 1/(1+exp(-FT_in))
+            e_in = [exp(num) for num in w_in]
+            H_in = [num1*log2(num1)*FT_in_sigmoid*num2 for num1, num2 in zip(p_in,e_in)]
+            H_in = -sum(H_in)/len(H_in)
+
+        # 计算出度加权概率, sigmoid值, exp值
+        if len(out_degree) == 0:
+            H_out = 0
+        else:
+            # 出度因果
+            w_out = list(w[out_relations])
+            # 出度波动
+            FT_out = sum(list(FT[out_degree]))/len(list(FT[out_degree]))
+
+            if sum(w_out) == 0:
+                p_out = [0]*len(w_out)
+            else:
+                p_out = [num/sum(w_out) for num in w_out]
+            FT_out_sigmoid = 1/(1+exp(-FT_out))
+            e_out = [exp(abs(num)) for num in w_out]
+            H_out = []
+            for num1, num2 in zip(p_out,e_out):
+                if num1 == 0:
+                    H_out.append(0)
+                else:
+                    H_out.append(num1*log2(num1)*FT_out_sigmoid*num2)
+            H_out = -sum(H_out)/len(H_out)
+
+        H_k = alpha*H_in+(1-alpha)*H_out
+        H_k_ls.append(H_k)
+    return H_k_ls
+
+def calculate_total_RFSCNE(node_relations_path,FT_path,w_path,output_dir):
+    '''
+    计算全局因果网络的RF-SCNE值
+    : param node_relations_path: 节点关系文件路径
+    : param FT_path: FT值文件存放路径
+    : param w_path: w值文件存放路径
+    : param output_dir: RF-SCNE值保存路径
+    '''
+
+    # 打开FT值文件
+    FT_df = pd.read_csv(FT_path, index_col=0)
+    # 打开w值文件
+    w_df = pd.read_csv(w_path, index_col=0)
+    # 设置RF-SCNE值空存储
+    total_RFSCNE = np.zeros(w_df.shape[0])
+    for i in range(w_df.shape[0]):
+        FT = FT_df.iloc[i]
+        w = w_df.iloc[i]
+        H_k = calculate_local_RFSCNE(node_relations_path=node_relations_path,FT=FT,w=w)
+        H = np.log10(H_k[0]+H_k[1])
+        total_RFSCNE[i] = H
     
-    return max_depth[val_mse.index(min(val_mse))] 
+    result_df = pd.DataFrame(
+        total_RFSCNE.T,
+        index = [f's{i+1}' for i in range(w_df.shape[0])],
+        columns = ["RF-SCNE"]
+    )
+    result_df.to_csv(os.path.join(output_dir,"simulation_data_entropy.csv"),index=True)
+    print("RF-SCNE analysis has been done successfully!")
 
-    
 if __name__ == "__main__":
 
     ref_s_array = np.linspace(-0.7,-0.5,200)
@@ -353,7 +399,7 @@ if __name__ == "__main__":
         -0.30, -0.28, -0.26, -0.24, -0.22,
         -0.20, -0.18, -0.16, -0.14, -0.12,
         -0.10, -0.08, -0.06, -0.04, -0.02,
-        -0.009, 0.02, 0.04, 0.06, 0.08,
+        -0.001, 0.02, 0.04, 0.06, 0.08,
         0.10, 0.12, 0.14, 0.16, 0.18,
         0.20
     ])
@@ -366,18 +412,18 @@ if __name__ == "__main__":
         [0, 0, 1, 1, 1]
     ])
     edge_relations = {
-        "Edge1": [1,2],
-        "Edge2": [1,3],
-        "Edge3": [1,4],
-        "Edge4": [1,5],
-        "Edge5": [2,3],
-        "Edge6": [2,5],
-        "Edge7": [3,4],
-        "Edge8": [4,5]
+        "node1-node2": [1,2],
+        "node1-node3": [1,3],
+        "node1-node4": [1,4],
+        "node1-node5": [1,5],
+        "node2-node3": [2,3],
+        "node2-node5": [2,5],
+        "node3-node4": [3,4],
+        "node4-node5": [4,5]
     }
 
-    ref_output_dir = "/Users/mymacstudio/VScode/data/Synthetic/ref"
-    case_output_dir = "/Users/mymacstudio/VScode/data/Synthetic/case"
+    ref_output_dir = "D:\\Github\\GitDB\\CPU\\Bachelor\\data\\synthetic\\ref"
+    case_output_dir = "D:\\Github\\GitDB\\CPU\\Bachelor\\data\\synthetic\\case"
 
     network_analysis(s_array = ref_s_array, S = S, edge_relations = edge_relations, output_dir = ref_output_dir)
     network_analysis(s_array = case_s_array, S = S, edge_relations = edge_relations, output_dir = case_output_dir)
