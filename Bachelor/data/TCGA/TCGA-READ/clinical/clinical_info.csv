@@ -1,0 +1,172 @@
+"","stage","age","gender","race","enthnicity","BMI","histological_type","therapy","ratiation","event","time"
+"TCGA-AF-3912",NA,NA,"",NA,NA,NA,"",NA,"No",NA,NA
+"TCGA-AH-6544",NA,60,"MALE","WHITE",NA,14.392885928629,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,1173
+"TCGA-AH-6547",NA,79,"FEMALE","WHITE",NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AH-6549",NA,66,"MALE","WHITE",NA,NA,"Rectal Adenocarcinoma",NA,"No",0,532
+"TCGA-AH-6644",NA,73,"MALE","WHITE",NA,NA,"Rectal Adenocarcinoma",NA,"No",0,838
+"TCGA-CL-4957",NA,79,"FEMALE",NA,"HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-EI-6510",NA,77,"FEMALE","WHITE","NOT HISPANIC OR LATINO",13.1111111111111,"Rectal Adenocarcinoma",NA,"No",0,556
+"TCGA-EI-7004",NA,37,"FEMALE","WHITE","NOT HISPANIC OR LATINO",14.8729042725798,"Rectal Mucinous Adenocarcinoma","Chemotherapy","Yes",0,257
+"TCGA-G5-6233",NA,74,"MALE","WHITE","NOT HISPANIC OR LATINO",15.6102156318814,"Rectal Adenocarcinoma","Chemotherapy","Yes",1,556
+"TCGA-G5-6572",NA,56,"MALE","WHITE","NOT HISPANIC OR LATINO",20.3647264319021,"Rectal Adenocarcinoma",NA,"No",1,1432
+"TCGA-AF-2691","Stage I",48,"FEMALE","WHITE","NOT HISPANIC OR LATINO",9.32724238298939,"Rectal Adenocarcinoma",NA,"No",0,1309
+"TCGA-AF-2693","Stage I",75,"MALE","WHITE","NOT HISPANIC OR LATINO",16.5497265449923,"",NA,"No",0,1155
+"TCGA-AF-5654","Stage I",73,"FEMALE","WHITE","NOT HISPANIC OR LATINO",17.7410468319559,"Rectal Adenocarcinoma",NA,"No",0,257
+"TCGA-AG-3580","Stage I",67,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,244
+"TCGA-AG-3581","Stage I",63,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,215
+"TCGA-AG-3587","Stage I",65,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,1400
+"TCGA-AG-3599","Stage I",70,"MALE",NA,NA,NA,"",NA,"No",0,366
+"TCGA-AG-3726","Stage I",63,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,243
+"TCGA-AG-3732","Stage I",78,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy,Targeted Molecular therapy","Yes",0,1003
+"TCGA-AG-3742","Stage I",85,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3878","Stage I",64,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3882","Stage I",66,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,608
+"TCGA-AG-3883","Stage I",69,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3890","Stage I",62,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,518
+"TCGA-AG-3891","Stage I",66,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,548
+"TCGA-AG-3892","Stage I",57,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,396
+"TCGA-AG-3896","Stage I",84,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3906","Stage I",67,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,608
+"TCGA-AG-4009","Stage I",83,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,426
+"TCGA-AG-A002","Stage I",35,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,638
+"TCGA-AG-A008","Stage I",50,"FEMALE",NA,NA,NA,"Rectal Mucinous Adenocarcinoma",NA,"No",0,424
+"TCGA-AG-A014","Stage I",86,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-A015","Stage I",64,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,1096
+"TCGA-AG-A025","Stage I",62,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-A02X","Stage I",77,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AH-6897","Stage I",48,"MALE","WHITE","NOT HISPANIC OR LATINO",13.2595667620721,"Rectal Adenocarcinoma",NA,"No",0,804
+"TCGA-CI-6623","Stage I",44,"MALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma",NA,"No",0,1443
+"TCGA-CI-6624","Stage I",53,"FEMALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma",NA,"No",0,1466
+"TCGA-DC-4749","Stage I",57,"MALE","WHITE","NOT HISPANIC OR LATINO",13.5919603008645,"Rectal Adenocarcinoma",NA,"No",0,762
+"TCGA-DC-5337","Stage I",68,"MALE","WHITE","NOT HISPANIC OR LATINO",12.7456382001837,"Rectal Adenocarcinoma",NA,"No",0,792
+"TCGA-DC-6157","Stage I",48,"MALE","BLACK OR AFRICAN AMERICAN","NOT HISPANIC OR LATINO",16.9466764061359,"Rectal Adenocarcinoma",NA,"No",0,1581
+"TCGA-DC-6158","Stage I",70,"MALE","WHITE","NOT HISPANIC OR LATINO",14.00390625,"Rectal Adenocarcinoma",NA,"No",0,216
+"TCGA-DC-6160","Stage I",68,"MALE","WHITE","NOT HISPANIC OR LATINO",16.2684023096256,"Rectal Adenocarcinoma",NA,"No",0,1339
+"TCGA-AG-3574","Stage II",89,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3575","Stage II",51,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,365
+"TCGA-AG-4022","Stage II",59,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,1400
+"TCGA-AG-A01W","Stage II",67,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-AG-A01Y","Stage II",49,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-AG-A026","Stage II",66,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",1,59
+"TCGA-AG-A02N","Stage II",67,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-DT-5265","Stage II",51,"MALE","ASIAN","NOT HISPANIC OR LATINO",NA,"Rectal Mucinous Adenocarcinoma",NA,"No",0,384
+"TCGA-AF-2692","Stage IIA",54,"FEMALE","WHITE","NOT HISPANIC OR LATINO",11.1418685121107,"","Chemotherapy","Yes",0,412
+"TCGA-AF-3400","Stage IIA",54,"MALE","WHITE","NOT HISPANIC OR LATINO",13.5071698714826,"Rectal Mucinous Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,1049
+"TCGA-AF-A56K","Stage IIA",56,"MALE","BLACK OR AFRICAN AMERICAN","NOT HISPANIC OR LATINO",21.8427472321261,"Rectal Adenocarcinoma",NA,"No",0,2635
+"TCGA-AF-A56N","Stage IIA",47,"FEMALE","BLACK OR AFRICAN AMERICAN","NOT HISPANIC OR LATINO",14.3260641550869,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,360
+"TCGA-AG-3578","Stage IIA",76,"FEMALE",NA,NA,NA,"Rectal Mucinous Adenocarcinoma",NA,"No",0,974
+"TCGA-AG-3591","Stage IIA",66,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,1035
+"TCGA-AG-3592","Stage IIA",68,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,1035
+"TCGA-AG-3593","Stage IIA",72,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,1035
+"TCGA-AG-3594","Stage IIA",77,"MALE",NA,NA,NA,"Rectal Mucinous Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3598","Stage IIA",69,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,1522
+"TCGA-AG-3608","Stage IIA",79,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,485
+"TCGA-AG-3611","Stage IIA",72,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,424
+"TCGA-AG-3881","Stage IIA",83,"FEMALE",NA,NA,NA,"",NA,"No",0,579
+"TCGA-AG-3887","Stage IIA",68,"MALE",NA,NA,NA,"Rectal Mucinous Adenocarcinoma","Chemotherapy,Targeted Molecular therapy","Yes",0,1124
+"TCGA-AG-3894","Stage IIA",65,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,426
+"TCGA-AG-3898","Stage IIA",61,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,1461
+"TCGA-AG-3902","Stage IIA",61,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,974
+"TCGA-AG-4001","Stage IIA",74,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,1096
+"TCGA-AG-4008","Stage IIA",63,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,518
+"TCGA-AG-4015","Stage IIA",85,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-A00H","Stage IIA",75,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,790
+"TCGA-AG-A00Y","Stage IIA",68,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,700
+"TCGA-AG-A011","Stage IIA",80,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,1126
+"TCGA-AG-A01J","Stage IIA",59,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-CL-5918","Stage IIA",90,"FEMALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma",NA,"No",0,0
+"TCGA-DC-6682","Stage IIA",57,"MALE","WHITE","NOT HISPANIC OR LATINO",25.460775047259,"Rectal Adenocarcinoma",NA,"No",0,762
+"TCGA-DY-A0XA","Stage IIA",57,"FEMALE","WHITE","NOT HISPANIC OR LATINO",12.6577271468692,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,3846
+"TCGA-DY-A1DC","Stage IIA",72,"FEMALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",1,1258
+"TCGA-DY-A1DE","Stage IIA",56,"FEMALE","WHITE","NOT HISPANIC OR LATINO",13.671875,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,3932
+"TCGA-EF-5831","Stage IIA",72,"MALE","WHITE","NOT HISPANIC OR LATINO",11.4311842706904,"Rectal Adenocarcinoma",NA,"No",0,127
+"TCGA-EI-6506","Stage IIA",78,"FEMALE","WHITE","NOT HISPANIC OR LATINO",12.3837829599146,"Rectal Adenocarcinoma",NA,"No",0,625
+"TCGA-EI-6507","Stage IIA",60,"MALE","WHITE","NOT HISPANIC OR LATINO",8.71642561983471,"Rectal Adenocarcinoma",NA,"No",0,607
+"TCGA-EI-6514","Stage IIA",59,"FEMALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,496
+"TCGA-EI-6882","Stage IIA",59,"MALE","WHITE","NOT HISPANIC OR LATINO",17.0433026133064,"Rectal Mucinous Adenocarcinoma",NA,"No",0,262
+"TCGA-F5-6465","Stage IIA",64,"FEMALE","WHITE","NOT HISPANIC OR LATINO",10.7266435986159,"Rectal Adenocarcinoma",NA,"No",0,1506
+"TCGA-F5-6571","Stage IIA",62,"FEMALE","WHITE","NOT HISPANIC OR LATINO",14.5158949049209,"Rectal Adenocarcinoma","Chemotherapy,Ancillary,Targeted Molecular therapy","Yes",0,1288
+"TCGA-F5-6811","Stage IIA",72,"FEMALE","WHITE","NOT HISPANIC OR LATINO",16.1616161616162,"Rectal Adenocarcinoma",NA,"No",0,979
+"TCGA-F5-6812","Stage IIA",67,"MALE","WHITE","NOT HISPANIC OR LATINO",12.7320054323223,"Rectal Adenocarcinoma",NA,"No",0,1110
+"TCGA-F5-6814","Stage IIA",57,"MALE","WHITE","NOT HISPANIC OR LATINO",9.95918367346939,"Rectal Adenocarcinoma",NA,"No",0,1131
+"TCGA-F5-6861","Stage IIA",60,"FEMALE","WHITE","NOT HISPANIC OR LATINO",12.1932632220698,"Rectal Adenocarcinoma",NA,"No",0,1160
+"TCGA-CI-6622","Stage IIB",74,"MALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,1362
+"TCGA-EF-5830","Stage IIB",54,"MALE","WHITE","NOT HISPANIC OR LATINO",14.0381596425552,"Rectal Adenocarcinoma",NA,"No",0,106
+"TCGA-EI-6883","Stage IIC",63,"MALE","WHITE","NOT HISPANIC OR LATINO",11.2654320987654,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,350
+"TCGA-AG-3586","Stage III",72,"FEMALE",NA,NA,NA,"",NA,"No",NA,NA
+"TCGA-AG-3725","Stage III",89,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",0,0
+"TCGA-AG-3727","Stage III",78,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-A020","Stage III",57,"FEMALE",NA,NA,NA,"Rectal Mucinous Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-AG-A036","Stage III",71,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,3562
+"TCGA-AF-6655","Stage IIIA",66,"MALE","WHITE","NOT HISPANIC OR LATINO",8.88770089211133,"Rectal Adenocarcinoma",NA,"No",0,609
+"TCGA-DC-6155","Stage IIIA",31,"FEMALE","WHITE","NOT HISPANIC OR LATINO",10.4068651435884,"Rectal Adenocarcinoma","Ancillary,Chemotherapy","Yes",0,425
+"TCGA-DY-A1H8","Stage IIIA",77,"FEMALE","WHITE","NOT HISPANIC OR LATINO",7.8125,"Rectal Adenocarcinoma",NA,"No",1,992
+"TCGA-EI-6881","Stage IIIA",60,"MALE","WHITE","NOT HISPANIC OR LATINO",13.8817148760331,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,499
+"TCGA-EI-6884","Stage IIIA",71,"MALE","WHITE","NOT HISPANIC OR LATINO",13.2457541007403,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,328
+"TCGA-EI-6917","Stage IIIA",33,"MALE","WHITE","NOT HISPANIC OR LATINO",12.9132231404959,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,531
+"TCGA-G5-6641","Stage IIIA",67,"MALE","WHITE","NOT HISPANIC OR LATINO",16.5483030454738,"Rectal Mucinous Adenocarcinoma","Chemotherapy","Yes",0,804
+"TCGA-AF-3914","Stage IIIB",39,"MALE","WHITE","NOT HISPANIC OR LATINO",10.7626782505719,"Rectal Adenocarcinoma","Chemotherapy,Ancillary,Targeted Molecular therapy","Yes",0,1146
+"TCGA-AF-6136","Stage IIIB",72,"FEMALE","WHITE","NOT HISPANIC OR LATINO",12.9142902386799,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,741
+"TCGA-AG-3601","Stage IIIB",68,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3612","Stage IIIB",55,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,608
+"TCGA-AG-3728","Stage IIIB",73,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,912
+"TCGA-AG-3885","Stage IIIB",71,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,546
+"TCGA-AG-3893","Stage IIIB",74,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,1065
+"TCGA-AG-3901","Stage IIIB",67,"FEMALE",NA,NA,NA,"Rectal Mucinous Adenocarcinoma",NA,"No",0,761
+"TCGA-AG-3909","Stage IIIB",69,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,608
+"TCGA-AG-A00C","Stage IIIB",49,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,183
+"TCGA-AG-A01L","Stage IIIB",58,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-AG-A032","Stage IIIB",68,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Targeted Molecular therapy","Yes",0,1157
+"TCGA-AH-6903","Stage IIIB",46,"MALE","WHITE","NOT HISPANIC OR LATINO",11.1678461584401,"Rectal Mucinous Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,592
+"TCGA-BM-6198","Stage IIIB",73,"MALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,646
+"TCGA-CI-6621","Stage IIIB",63,"MALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma",NA,"No",0,419
+"TCGA-DC-4745","Stage IIIB",49,"FEMALE","WHITE","NOT HISPANIC OR LATINO",17.22681359045,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,639
+"TCGA-DC-5869","Stage IIIB",62,"FEMALE","BLACK OR AFRICAN AMERICAN","NOT HISPANIC OR LATINO",10.7958477508651,"Rectal Adenocarcinoma",NA,"No",0,943
+"TCGA-DC-6683","Stage IIIB",43,"MALE","WHITE","NOT HISPANIC OR LATINO",12.3324076562453,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,762
+"TCGA-DY-A1DD","Stage IIIB",77,"FEMALE","WHITE","NOT HISPANIC OR LATINO",8.62919132149901,"Rectal Adenocarcinoma",NA,"No",1,1741
+"TCGA-EI-6508","Stage IIIB",48,"FEMALE","WHITE","NOT HISPANIC OR LATINO",13.0532811202089,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,636
+"TCGA-EI-6511","Stage IIIB",52,"MALE","WHITE","NOT HISPANIC OR LATINO",12.6721763085399,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,482
+"TCGA-EI-6512","Stage IIIB",64,"FEMALE","WHITE","NOT HISPANIC OR LATINO",10.5536332179931,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,538
+"TCGA-EI-6513","Stage IIIB",59,"MALE","WHITE","NOT HISPANIC OR LATINO",12.734693877551,"Rectal Adenocarcinoma",NA,"No",0,497
+"TCGA-F5-6863","Stage IIIB",71,"FEMALE","WHITE","NOT HISPANIC OR LATINO",13.9715488459864,"Rectal Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-F5-6864","Stage IIIB",74,"FEMALE","WHITE","NOT HISPANIC OR LATINO",15.8221428861211,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,379
+"TCGA-G5-6235","Stage IIIB",72,"MALE","WHITE","NOT HISPANIC OR LATINO",13.5849585098561,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,1696
+"TCGA-AF-2687","Stage IIIC",57,"MALE","WHITE","NOT HISPANIC OR LATINO",12.8345063796153,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,1427
+"TCGA-AF-2690","Stage IIIC",76,"FEMALE","WHITE","NOT HISPANIC OR LATINO",10.64453125,"Rectal Adenocarcinoma",NA,"No",0,358
+"TCGA-AF-3911","Stage IIIC",48,"MALE","WHITE","NOT HISPANIC OR LATINO",14.5348434804998,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,1148
+"TCGA-AF-A56L","Stage IIIC",48,"FEMALE","BLACK OR AFRICAN AMERICAN",NA,14.6948301095684,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,2007
+"TCGA-AG-3600","Stage IIIC",62,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,184
+"TCGA-AG-3602","Stage IIIC",66,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3609","Stage IIIC",65,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,608
+"TCGA-AG-3999","Stage IIIC",61,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,853
+"TCGA-AH-6643","Stage IIIC",50,"MALE","WHITE",NA,12.9526323462834,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",NA,NA
+"TCGA-CL-5917","Stage IIIC",71,"FEMALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma",NA,"No",0,2376
+"TCGA-DY-A1DF","Stage IIIC",73,"FEMALE","WHITE","NOT HISPANIC OR LATINO",15.4092702169625,"Rectal Adenocarcinoma",NA,"No",1,734
+"TCGA-EI-6509","Stage IIIC",53,"MALE","WHITE","NOT HISPANIC OR LATINO",12.9402853175104,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,517
+"TCGA-F5-6464","Stage IIIC",77,"FEMALE","WHITE","NOT HISPANIC OR LATINO",13.4488350935485,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-F5-6813","Stage IIIC",70,"MALE","WHITE","NOT HISPANIC OR LATINO",14.0375214691505,"Rectal Adenocarcinoma",NA,"No",0,252
+"TCGA-AF-2689","Stage IV",41,"FEMALE","WHITE","NOT HISPANIC OR LATINO",10.444502992209,"Rectal Adenocarcinoma","Chemotherapy,Ancillary,Targeted Molecular therapy","Yes",0,546
+"TCGA-AF-3913","Stage IV",60,"MALE","BLACK OR AFRICAN AMERICAN","NOT HISPANIC OR LATINO",14.7376543209877,"Rectal Adenocarcinoma","Chemotherapy","Yes",1,316
+"TCGA-AF-6672","Stage IV",43,"MALE","WHITE","NOT HISPANIC OR LATINO",15.7249099673465,"Rectal Adenocarcinoma","Ancillary,Chemotherapy","Yes",0,748
+"TCGA-AG-3582","Stage IV",75,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3583","Stage IV",66,"MALE",NA,NA,NA,"Rectal Mucinous Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3584","Stage IV",60,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",NA,NA
+"TCGA-AG-3605","Stage IV",85,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-3731","Stage IV",65,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,1126
+"TCGA-AG-4005","Stage IV",64,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,427
+"TCGA-AG-4007","Stage IV",86,"MALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-4021","Stage IV",84,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-A016","Stage IV",55,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy,Targeted Molecular therapy","Yes",0,276
+"TCGA-AG-A01N","Stage IV",68,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy,Targeted Molecular therapy","Yes",0,943
+"TCGA-AG-A023","Stage IV",62,"FEMALE",NA,NA,NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-AG-A02G","Stage IV",66,"MALE",NA,NA,NA,"Rectal Adenocarcinoma","Chemotherapy,Targeted Molecular therapy","Yes",NA,NA
+"TCGA-CI-6619","Stage IV",41,"MALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma",NA,"No",NA,NA
+"TCGA-EI-6885","Stage IV",57,"FEMALE","WHITE","NOT HISPANIC OR LATINO",9.85276621058894,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,415
+"TCGA-EI-7002","Stage IV",58,"MALE","WHITE","NOT HISPANIC OR LATINO",13.5865595325055,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,364
+"TCGA-AF-4110","Stage IVA",77,"MALE","WHITE","NOT HISPANIC OR LATINO",13.0149388863739,"","Chemotherapy,Ancillary","Yes",0,912
+"TCGA-CI-6620","Stage IVA",41,"FEMALE","WHITE","NOT HISPANIC OR LATINO",NA,"Rectal Adenocarcinoma","Ancillary,Chemotherapy","Yes",0,1009
+"TCGA-DC-6154","Stage IVA",57,"FEMALE","WHITE","NOT HISPANIC OR LATINO",11.3168724279835,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,365
+"TCGA-DC-6156","Stage IVA",62,"MALE","WHITE","NOT HISPANIC OR LATINO",14.0571428571429,"Rectal Adenocarcinoma","Chemotherapy,Ancillary,Immunotherapy","Yes",0,943
+"TCGA-DC-6681","Stage IVA",70,"FEMALE","WHITE","NOT HISPANIC OR LATINO",13.8371124073506,"Rectal Adenocarcinoma","Chemotherapy,Ancillary","Yes",0,790
+"TCGA-DY-A1DG","Stage IVA",75,"MALE","WHITE","NOT HISPANIC OR LATINO",14.0408163265306,"Rectal Adenocarcinoma",NA,"No",1,1566
+"TCGA-F5-6702","Stage IVA",71,"MALE","WHITE","NOT HISPANIC OR LATINO",12.8447809626825,"Rectal Adenocarcinoma","Chemotherapy","Yes",0,452
