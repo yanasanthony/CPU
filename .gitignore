@@ -5,4 +5,7 @@
 *.tmp
 
 # ignore all python cache
-__pycache__
+__pycache__/
+
+# ignore all vscode config
+.vscode/
