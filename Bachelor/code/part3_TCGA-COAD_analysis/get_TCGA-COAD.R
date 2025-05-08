@@ -284,3 +284,4 @@ write.csv(clinical_info,"D:\\Github\\GitDB\\CPU\\Bachelor\\data\\TCGA\\TCGA-COAD
 # save PPI network
 write.csv(ppi_final[,c("from_symbol","to_symbol","combined_score")],
           "D:\\Github\\GitDB\\CPU\\Bachelor\\data\\TCGA\\TCGA-COAD\\PPI.csv",row.names=FALSE)
+
