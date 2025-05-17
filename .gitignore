@@ -9,3 +9,6 @@ __pycache__/
 
 # ignore all vscode config
 .vscode/
+
+# ignore all R console history
+.Rhistory
